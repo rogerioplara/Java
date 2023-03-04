@@ -1,3 +1,10 @@
+package data_hora.src;
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class App {
     public static void main(String[] args) throws Exception {
         /*
@@ -79,6 +86,57 @@ public class App {
          * Cálculos com data-hora
          * - Data-hora +/- tempo -> Data-hora
          * - Data-hora 1, Data-hora 2 -> Duração
+         *
+         * Principais tipos Java (versão 8+)
+         * 
+         * Data-hora local:
+         * LocalDate
+         * LocalDateTime
+         * 
+         * Data-hora global:
+         * Instant
+         * 
+         * Duração:
+         * Duration
+         * 
+         * Outros:
+         * ZoneId
+         * ChronoUnit
          */
+
+        // Instanciação
+
+        // definição de um formato customizado
+        DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+        LocalDate d01 = LocalDate.now(); // data local
+        LocalDateTime d02 = LocalDateTime.now(); // fuso local
+        Instant d03 = Instant.now(); // fuso gmt Z
+
+        LocalDate d04 = LocalDate.parse("2022-07-20");
+        LocalDateTime d05 = LocalDateTime.parse("2022-07-20T01:30:26");
+        Instant d06 = Instant.parse("2022-07-20T01:30:26Z");
+        Instant d07 = Instant.parse("2022-07-20T01:30:26-03:00");
+
+        // instânca de um formato customizado
+        LocalDate d08 = LocalDate.parse("04/03/2023", fmt1);
+        LocalDateTime d09 = LocalDateTime.parse("20/07/2022 01:30", fmt2);
+
+        LocalDate d10 = LocalDate.of(2023, 03, 04);
+        LocalDateTime d11 = LocalDateTime.of(2023, 03, 04, 15, 07);
+
+        System.out.println("d01 = " + d01);
+        System.out.println("d02 = " + d02);
+        System.out.println("d03 = " + d03);
+        System.out.println("d04 = " + d04);
+        System.out.println("d05 = " + d05);
+        System.out.println("d06 = " + d06);
+        System.out.println("d07 = " + d07);
+        System.out.println("d08 = " + d08);
+        System.out.println("d09 = " + d09);
+        System.out.println("d10 = " + d10);
+        System.out.println("d11 = " + d11);
+
     }
 }

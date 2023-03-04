@@ -1,3 +1,5 @@
+package oop_matrizes_negativos.src;
+
 import java.util.Scanner;
 
 public class App {
