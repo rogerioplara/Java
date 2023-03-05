@@ -1,8 +1,10 @@
 package data_hora.src;
 
+import java.text.Format;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class App {
@@ -137,6 +139,35 @@ public class App {
         System.out.println("d09 = " + d09);
         System.out.println("d10 = " + d10);
         System.out.println("d11 = " + d11);
+        System.out.println();
 
+        // datetime formatter
+
+        // possível chamar dessas formas
+        System.out.println("fmt1");
+        System.out.println("d04 = " + d04.format(fmt1));
+        System.out.println("d04 = " + fmt1.format(d04));
+        System.out.println("d04 = " + d04.format(DateTimeFormatter.ofPattern("dd/MM/yyy")));
+
+        // fmt2
+        System.out.println("fmt2");
+        System.out.println("d04 = " + d05.format(fmt2));
+
+        // instant customizado
+        System.out.println("instant customizado");
+        System.out.println("d06 = " + d06);
+        // formatar instant com fuso horário padrão do sistema do usuário
+        DateTimeFormatter fmt3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm").withZone(ZoneId.systemDefault());
+        System.out.println("d06 = " + fmt3.format(d06));
+        // instant tem que instsanciar com o fuso horário
+
+        // padrões do java
+        System.out.println("padrão do java");
+        DateTimeFormatter fmt4 = DateTimeFormatter.ISO_DATE_TIME;
+        DateTimeFormatter fmt5 = DateTimeFormatter.ISO_INSTANT;
+        System.out.println("d05 = " + d05.format(fmt4));
+        System.out.println("d06 = " + fmt5.format(d06));
+        // imprime no formato iso
+        System.out.println("d06 = " + d06.toString());
     }
 }
